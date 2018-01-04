@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+	</head>
+	<body>
+		
+	</body>
+</html>
+<script type="text/javascript">
+	
+	//数据绑定
+	
+//	{{value}}             // 目前最常见的双花括号数据绑定
+//	{{data.key}}       // 对象点方式
+//	{{data['key']}}    // 另外一种对象处理方式
+//	{{a ? b : c}}       // 三元运算
+//	{{a || b}}           // 或运算  防止 undefined 报错
+//	{{a + b}}          // 并列输出
+//	{{$data['list']}}  // 官档说是为模板一级的特殊变量，我目前看不出它跟 {{value}} 有什么不同，应用场景有待发掘
+	
+//	c. 条件与循环
+
+{{if value}} ... {{/if}}
+{{if v1}} ... {{else if v2}} ... {{/if}}
+
+// 循环更老版本是改变了的，更简单了点，同时可以看出，并不能写更多的逻辑，只是单纯的循环数组
+{{each target}}
+    {{$index}} {{$value}}
+{{/each}}
+
+// 可以采用原生语法，达到更多的逻辑实现
+//<% for(var i = 0; i < target.length; i++){ %>
+//  <%= i %> <%= target[i] %>
+//<% } %>
+//
+//注意：
+//target 支持 array 与 object 的迭代，其默认值为 $data。
+//$value 与 $index 可以自定义：{{each target val key}}。
+
+</script>
