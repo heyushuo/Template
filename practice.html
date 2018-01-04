@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/template-web.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div class="box" id="box">
+			
+		</div>
+	</body>
+</html>
+<script type="text/html" id="test">
+	<h1><%= head %></h1>
+	<% for(var i = 0; i < list.length; i++){ %>
+	    <p><%= list[i].name %> </p>
+	<% } %>
+	
+	<br />
+</script>
+<script src="bower_components/axios/dist/axios.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	var data={
+	head:"我是标题",
+	list:[{"name":"heyushuo"},
+		{"name":"游国恩"},
+		{"name":"duyao"}]
+	}
+	var html = template('test', data);
+	document.getElementById("box").innerHTML=html;
+	axios({
+	    method:"POST",
+	    url:'http://192.168.8.103:9090/gongan/admin/cooperation/toGetAllLable.do',
+	    data:{
+	    },
+      headers: {
+//          'X-Requested-With': 'XMLHttpRequest',
+            'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+        }
+	}).then((res)=>{
+		console.log(res)
+	}).catch(err=>{
+		console.log("err")
+	});
+	axios({
+	    method:"get",
+	    url:'https://www.easy-mock.com/mock/5a4dd0b9b1b87504164eba98/heyushuo/info',
+	    data:{
+	    },
+	}).then((res)=>{
+		console.log(res.data.data)
+	}).catch(err=>{
+		console.log("err")
+	});
+</script>
